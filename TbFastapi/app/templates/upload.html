@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TB Chest X-Ray Analyzer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --light-color: #f9f9f9;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            position: relative;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .upload-container {
+            border: 2px dashed #ccc;
+            border-radius: var(--border-radius);
+            padding: 40px 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            transition: var(--transition);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .upload-container:hover {
+            border-color: var(--primary-color);
+        }
+
+        .upload-container.dragover {
+            background-color: rgba(52, 152, 219, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        .upload-icon {
+            font-size: 50px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .upload-text {
+            margin-bottom: 15px;
+        }
+
+        .file-input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .preview-container {
+            display: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .preview-image {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .result-container {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+
+        .result-normal {
+            color: #27ae60;
+        }
+
+        .result-tb {
+            color: var(--accent-color);
+        }
+
+        .loading-container {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 10;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .loader {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+
+        .loader-text {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .info-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+        }
+
+        .info-section h2 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #777;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                max-width: 100%;
+            }
+            
+            h1 {
+                font-size: 20px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Tuberculosis X-Ray Analyzer</h1>
+            <div class="subtitle">AI-powered detection of tuberculosis from chest X-rays</div>
+        </header>
+        
+        <div class="content">
+            <div class="upload-container" id="upload-area">
+                <div class="upload-icon">📤</div>
+                <div class="upload-text">
+                    <strong>Drag & drop</strong> your chest X-ray image here<br>
+                    or <strong>click</strong> to select a file
+                </div>
+                <input type="file" id="file-input" class="file-input" accept="image/*">
+            </div>
+            
+            <div class="preview-container" id="preview-container">
+                <h3>Preview</h3>
+                <img id="preview-image" class="preview-image" src="" alt="Preview">
+                <div>
+                    <button id="analyze-btn" class="btn">Analyze X-Ray</button>
+                    <button id="reset-btn" class="btn" style="background-color: #e74c3c;">Reset</button>
+                </div>
+            </div>
+            
+            <div class="result-container" id="result-container">
+                <h2>Analysis Result</h2>
+                <div id="result-text" class="result-text"></div>
+                <div id="result-confidence" class="result-confidence"></div>
+            </div>
+            
+            <div class="loading-container" id="loading-container">
+                <div class="loader"></div>
+                <div class="loader-text">Analyzing your X-ray...</div>
+            </div>
+            
+            <div class="info-section">
+                <h2>About this tool</h2>
+                <p>This application uses a deep learning model trained on thousands of chest X-rays to detect signs of tuberculosis. The model has achieved over 99% accuracy in test evaluations.</p>
+                <p>For medical professionals only. Results should be confirmed by a qualified radiologist.</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        &copy; 2023 TB Detection System | Created by Dikshanta
+    </footer>
+
+    <script src="/static/upload.js"></script>
+</body>
+</html>
