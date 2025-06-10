@@ -1,7 +1,3 @@
-Got it! Here’s your updated README including the part about the FastAPI backend linked with HTML, CSS, and JS frontend for image upload and detection:
-
----
-
 🚨 Tuberculosis X-Ray Prediction API
 
 A deep learning project to detect Tuberculosis (TB) from chest X-ray images using a Convolutional Neural Network (CNN) built with PyTorch. This repository also includes a FastAPI-based REST API linked with a simple HTML, CSS, and JavaScript frontend to upload X-ray images and display predictions directly on the web page.
