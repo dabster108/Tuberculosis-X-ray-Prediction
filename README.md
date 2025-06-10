@@ -1,4 +1,11 @@
+Got it! Here's the README with those four images properly included and captions explaining each, exactly as you requested:
+
+---
+
 🚨 Tuberculosis X-Ray Prediction API
+
+![FastAPI Swagger UI](./assets/fastapidocs.png)
+*FastAPI Swagger UI showing API documentation and endpoints.*
 
 A deep learning project to detect Tuberculosis (TB) from chest X-ray images using a Convolutional Neural Network (CNN) built with PyTorch. This repository also includes a FastAPI-based REST API linked with a simple HTML, CSS, and JavaScript frontend to upload X-ray images and display predictions directly on the web page.
 
@@ -85,6 +92,19 @@ You will see a simple web page built with HTML, CSS, and JavaScript where you ca
 * The frontend sends the image to the FastAPI backend.
 * The prediction (Normal or TB Positive) will be displayed on the page instantly.
 
+![Web Upload Page](./assets/tuber1.png)
+*Web interface for uploading X-ray images (HTML/CSS/JS frontend).*
+
+---
+
+📷 Prediction Examples
+
+![Tuberculosis Positive Chest X-Ray](./assets/tuber2.png)
+*Predicted: Tuberculosis Positive*
+
+![Normal Chest X-Ray](./assets/tuber3.png)
+*Predicted: Normal*
+
 ---
 
 📈 Example Prediction Output from API or Frontend
@@ -92,7 +112,6 @@ You will see a simple web page built with HTML, CSS, and JavaScript where you ca
 ```json
 {
   "prediction": "TB Positive",
-  "confidence": 0.87
 }
 ```
 
@@ -146,4 +165,4 @@ Feel free to open issues or submit pull requests to improve the model, API, or f
 
 ---
 
-If you want, I can help draft the FastAPI server code that serves the HTML/JS frontend and handles image upload prediction too. Just ask!
+If you want me to help you write the FastAPI backend code serving the HTML/CSS/JS frontend and handling image upload + prediction, just ask!
