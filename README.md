@@ -1,11 +1,6 @@
-Got it! Here's the README with those four images properly included and captions explaining each, exactly as you requested:
 
----
 
 🚨 Tuberculosis X-Ray Prediction API
-
-![FastAPI Swagger UI](./assets/fastapidocs.png)
-*FastAPI Swagger UI showing API documentation and endpoints.*
 
 A deep learning project to detect Tuberculosis (TB) from chest X-ray images using a Convolutional Neural Network (CNN) built with PyTorch. This repository also includes a FastAPI-based REST API linked with a simple HTML, CSS, and JavaScript frontend to upload X-ray images and display predictions directly on the web page.
 
@@ -86,6 +81,10 @@ Open your browser and go to:
 http://localhost:8000/
 ```
 
+
+![FastAPI Swagger UI](./assets/fastapidocs.png)
+*FastAPI Swagger UI showing API documentation and endpoints.*
+
 You will see a simple web page built with HTML, CSS, and JavaScript where you can:
 
 * Upload chest X-ray images.
@@ -165,4 +164,3 @@ Feel free to open issues or submit pull requests to improve the model, API, or f
 
 ---
 
-If you want me to help you write the FastAPI backend code serving the HTML/CSS/JS frontend and handling image upload + prediction, just ask!
