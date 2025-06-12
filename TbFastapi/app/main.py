@@ -21,7 +21,7 @@ app.mount("/static", StaticFiles(directory="app/static"), name="static")
 templates = Jinja2Templates(directory="app/templates")
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-MODEL_PATH = "/Users/dikshanta/Downloads/TuberChestPrediction/tuber_model.pth"
+MODEL_PATH = "/Users/dikshanta/Downloads/Tuberculosis-X-ray-Prediction/tuber_model.pth"  # Corrected path
 model = load_model(MODEL_PATH, device)
 
 # HTML form for uploading image
