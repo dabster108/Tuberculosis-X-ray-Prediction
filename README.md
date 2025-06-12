@@ -38,7 +38,7 @@ The FastAPI service provides an easy-to-use interface for uploading chest X-ray 
 
 To install and setup the project, run the following commands:
 
-```bash
+```bash or terminal 
 git clone https://github.com/dabster108/Tuberculosis-X-ray-Prediction.git
 cd Tuberculosis-X-ray-Prediction
 pip install -r requirements.txt
@@ -48,22 +48,8 @@ pip install -r requirements.txt
 
 🛠 Usage
 
-1. Training the Model
 
-Run the training script (e.g., `train.py`):
-
-```bash
-python train.py
-```
-
-This will:
-
-* Load and preprocess the dataset.
-* Train the CNN model for a specified number of epochs.
-* Evaluate the model on the test set.
-* Save the trained model weights as `tuber_model.pth`.
-
-2. Running the API Server with Frontend
+ Running the API Server with Frontend
 
 Start the FastAPI server that serves both the API and the frontend web page:
 
@@ -73,7 +59,7 @@ uvicorn main:app --reload
 
 The backend will handle image uploads both via API and the web interface.
 
-3. Accessing the Frontend
+ Accessing the Frontend
 
 Open your browser and go to:
 
