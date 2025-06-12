@@ -212,7 +212,7 @@ def evaluate_model(test_data_path=None):
 
 # Example usage:
 if __name__ == "__main__":
-    image_path = "/Users/dikshanta/Downloads/TB_Chest_Radiography_Database/testtuber.png"
+    image_path = "/Users/dikshanta/Downloads/Tuberculosis-X-ray-Prediction/Normal/Normal-1.png"
     
     # Basic prediction
     result, confidence = predict_image(image_path)
