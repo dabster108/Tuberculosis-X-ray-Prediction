@@ -6,8 +6,6 @@
     <title>TB Chest X-Ray Analyzer</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
-    <!-- Consider adding Animate.css for more element animations: -->
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> -->
     <style>
         :root {
             --primary-color: #3498db; /* Light Blue */
@@ -15,8 +13,8 @@
             --accent-color: #e74c3c;
             --text-color: #333;
             --light-color: #f9f9f9;
-            --border-radius: 12px; /* Slightly more rounded */
-            --box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Softer shadow */
+            --border-radius: 12px;
+            --box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
         }
 
@@ -30,7 +28,6 @@
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: var(--text-color);
-            /* Subtle animated gradient background */
             background: linear-gradient(135deg, #e0f2f7, #d1e0e8, #f5f7fa);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
@@ -40,6 +37,7 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
+            overflow-x: hidden; /* Prevent horizontal scroll during animations */
         }
 
         @keyframes gradientBG {
@@ -50,30 +48,45 @@
 
         .container {
             width: 100%;
-            max-width: 900px; /* Increased max-width for side-by-side layout */
+            max-width: 900px;
             background-color: white;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
             overflow: hidden;
             position: relative;
+            /* Entry animation for the container */
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            animation: fadeInContainer 0.8s 0.2s ease-out forwards;
+        }
+
+        @keyframes fadeInContainer {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         header {
             background-color: var(--primary-color);
             color: white;
-            padding: 25px 20px; /* Increased padding */
+            padding: 25px 20px;
             text-align: center;
             border-bottom: 3px solid var(--secondary-color);
+            /* Staggered animation */
+            opacity: 0;
+            transform: translateY(-20px);
+            animation: fadeInElement 0.6s 0.5s ease-out forwards;
         }
 
         h1 {
-            font-size: 28px; /* Slightly larger */
+            font-size: 28px;
             margin-bottom: 5px;
             font-weight: 600;
         }
 
         .subtitle {
-            font-size: 15px; /* Slightly larger */
+            font-size: 15px;
             opacity: 0.9;
         }
 
@@ -87,6 +100,10 @@
             gap: 30px;
             align-items: center;
             margin-bottom: 30px;
+            /* Staggered animation */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInElement 0.6s 0.7s ease-out forwards;
         }
 
         .upload-section {
@@ -99,33 +116,29 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 250px; /* Ensure space for Lottie */
-            /* background-color: #f0f4f8; Optional background for Lottie area */
+            min-height: 250px;
             border-radius: var(--border-radius);
-            /* border: 1px dashed var(--primary-color); */
         }
         
         #lottie-animation {
             width: 100%;
-            max-width: 300px; /* Adjust as needed */
+            max-width: 300px;
             height: auto;
         }
 
-
         .upload-container {
-            border: 2px dashed #b0c4de; /* Lighter, bluish dash */
+            border: 2px dashed #b0c4de;
             border-radius: var(--border-radius);
-            padding: 30px 20px; /* Adjusted padding */
+            padding: 30px 20px;
             text-align: center;
-            /* margin-bottom: 20px; Removed as it's part of flex */
             transition: var(--transition);
             cursor: pointer;
-            background-color: #f9fcff; /* Very light blue tint */
+            background-color: #f9fcff;
         }
 
         .upload-container:hover {
             border-color: var(--primary-color);
-            transform: translateY(-3px); /* Subtle hover lift */
+            transform: translateY(-3px);
             box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2);
         }
 
@@ -135,10 +148,10 @@
         }
 
         .upload-icon {
-            font-size: 48px; /* Slightly smaller */
+            font-size: 48px;
             color: var(--primary-color);
             margin-bottom: 10px;
-            animation: bounce 2s infinite; /* Simple icon animation */
+            animation: bounce 2s infinite;
         }
         
         @keyframes bounce {
@@ -166,14 +179,14 @@
             background-color: var(--primary-color);
             color: white;
             border: none;
-            padding: 12px 28px; /* Slightly more padding */
+            padding: 12px 28px;
             border-radius: var(--border-radius);
             cursor: pointer;
             font-size: 16px;
-            font-weight: 600; /* Bolder text */
+            font-weight: 600;
             transition: var(--transition);
             display: inline-block;
-            margin: 10px 5px; /* Adjusted margin for multiple buttons */
+            margin: 10px 5px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
@@ -183,13 +196,12 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.15);
         }
         
-        .btn.reset-btn { /* Specific style for reset button */
+        .btn.reset-btn {
             background-color: #e74c3c;
         }
         .btn.reset-btn:hover {
             background-color: #c0392b;
         }
-
 
         .btn:disabled {
             background-color: #ccc;
@@ -199,9 +211,19 @@
         }
 
         .preview-container {
-            display: none;
+            display: none; /* Keep it initially hidden via display */
             margin: 20px 0;
             text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            /* MODIFIED: Replaced animation with transition */
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        
+        .preview-container.visible { /* JS will add this class */
+            /* display: block; /* JS handles setting display to block */
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .preview-image {
@@ -212,14 +234,14 @@
             border: 3px solid var(--light-color);
         }
         
-        .preview-actions { /* Container for buttons under preview */
+        .preview-actions {
             margin-top: 15px;
         }
 
         .result-container {
             display: none;
-            margin-top: 30px; /* Increased margin */
-            padding: 25px; /* Increased padding */
+            margin-top: 30px;
+            padding: 25px;
             border-radius: var(--border-radius);
             background-color: var(--light-color);
             text-align: center;
@@ -227,20 +249,18 @@
             opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease;
         }
         
-        /* JS will add this class for animation */
         .result-container.show {
             opacity: 1;
             transform: translateY(0);
         }
 
-
-        .result-normal h3 { /* Target h3 within result-normal */
-            color: #27ae60; /* Green for normal */
+        .result-normal h3 {
+            color: #27ae60;
             font-weight: 600;
         }
 
-        .result-tb h3 { /* Target h3 within result-tb */
-            color: var(--accent-color); /* Red for TB */
+        .result-tb h3 {
+            color: var(--accent-color);
             font-weight: 600;
         }
         
@@ -249,7 +269,6 @@
             font-size: 15px;
         }
 
-
         .loading-container {
             display: none;
             position: absolute;
@@ -257,7 +276,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(255, 255, 255, 0.85); /* Slightly more opaque */
+            background-color: rgba(255, 255, 255, 0.85);
             z-index: 10;
             justify-content: center;
             align-items: center;
@@ -265,10 +284,10 @@
         }
 
         .loader {
-            border: 6px solid #f3f3f3; /* Thicker border */
+            border: 6px solid #f3f3f3;
             border-top: 6px solid var(--primary-color);
             border-radius: 50%;
-            width: 60px; /* Larger loader */
+            width: 60px;
             height: 60px;
             animation: spin 1s linear infinite;
             margin-bottom: 20px;
@@ -277,7 +296,7 @@
         .loader-text {
             color: var(--primary-color);
             font-weight: 500;
-            font-size: 18px; /* Larger text */
+            font-size: 18px;
         }
 
         @keyframes spin {
@@ -286,11 +305,23 @@
         }
 
         .info-section {
-            margin-top: 40px; /* Increased margin */
+            margin-top: 40px;
             padding: 25px;
-            background-color: #eaf2f8; /* Lighter blue background */
+            background-color: #eaf2f8;
             border-radius: var(--border-radius);
             border-left: 5px solid var(--primary-color);
+            /* Staggered animation */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInElement 0.6s 0.9s ease-out forwards;
+        }
+
+        /* General keyframe for fading in elements */
+        @keyframes fadeInElement {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .info-section h2 {
@@ -306,10 +337,14 @@
 
         footer {
             text-align: center;
-            margin-top: 40px; /* Increased margin */
-            padding-bottom: 20px; /* Padding for spacing */
-            color: #555; /* Darker grey */
+            margin-top: 40px;
+            padding-bottom: 20px;
+            color: #555;
             font-size: 14px;
+            /* Staggered animation */
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInElement 0.6s 1.1s ease-out forwards;
         }
         
         footer a {
@@ -320,12 +355,17 @@
             text-decoration: underline;
         }
 
-
         @media (max-width: 768px) {
             .container {
                 max-width: 100%;
                 margin: 10px;
                 padding: 0;
+                animation: fadeInContainer 0.6s 0.1s ease-out forwards; /* Adjust timing for mobile */
+            }
+            
+            header, .hero-section, .info-section, footer {
+                /* Adjust animation delays for mobile if needed, or rely on shorter overall load time */
+                animation-duration: 0.5s;
             }
             
             .hero-section {
@@ -333,9 +373,9 @@
             }
 
             .lottie-container {
-                min-height: 200px; /* Adjust for mobile */
+                min-height: 200px;
                 margin-top: 20px;
-                order: -1; /* Show Lottie above upload on mobile if desired */
+                order: -1;
             }
             
             #lottie-animation {
@@ -393,8 +433,7 @@
             <div class="result-container" id="result-container">
                 <h2>Analysis Result</h2>
                 <div id="result-text" class="result-text"></div>
-                <!-- Confidence score can be added here if provided by API -->
-                <!-- <div id="result-confidence" class="result-confidence"></div> -->
+                <div id="result-confidence" class="result-confidence"></div>
             </div>
             
             <div class="loading-container" id="loading-container">
@@ -403,7 +442,6 @@
             </div>
             
             <div class="info-section">
-                <!-- Add class="animate__animated animate__fadeInUp" for animations with Animate.css -->
                 <h2>About This Tool & Tuberculosis</h2>
                 <p>This application utilizes a sophisticated deep learning model, meticulously trained on thousands of chest X-ray images, to identify potential signs of tuberculosis (TB). Our model has demonstrated high accuracy in evaluations, aiming to assist medical professionals.</p>
                 <p><strong>What is Tuberculosis?</strong> TB is a serious infectious disease that mainly affects the lungs. Early detection is crucial for effective treatment and preventing its spread.</p>
@@ -421,16 +459,14 @@
 
     <script src="/static/upload.js"></script>
     <script>
-        // Lottie Animation Setup
         document.addEventListener('DOMContentLoaded', function() {
             var animation = lottie.loadAnimation({
-                container: document.getElementById('lottie-animation'), // Required
-                path: 'https://assets9.lottiefiles.com/packages/lf20_vPnn3KjS6b.json', // Example Lottie JSON URL
-                // path: '/static/lottie/your_animation.json', // Or host your Lottie JSON locally
-                renderer: 'svg', // Required
-                loop: true, // Optional
-                autoplay: true, // Optional
-                name: "Lungs Scan Animation", // Optional
+                container: document.getElementById('lottie-animation'),
+                path: 'https://assets9.lottiefiles.com/packages/lf20_vPnn3KjS6b.json',
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                name: "Lungs Scan Animation",
             });
         });
     </script>

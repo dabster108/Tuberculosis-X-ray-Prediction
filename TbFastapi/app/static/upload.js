@@ -88,9 +88,12 @@ document.addEventListener('DOMContentLoaded', function() {
         reader.onload = function(e) {
             console.log('File loaded for preview');
             previewImage.src = e.target.result;
-            uploadArea.style.display = 'none'; // Hide upload area
-            // lottieContainer.style.display = 'none'; // Optionally hide Lottie if preview takes full width or overlaps
-            previewContainer.style.display = 'block'; // Show preview area
+            uploadArea.style.display = 'none';
+            previewContainer.style.display = 'block'; // Set display to block first
+            // Add .visible class after a short delay to trigger transition
+            setTimeout(() => {
+                previewContainer.classList.add('visible');
+            }, 50); 
         };
 
         reader.onerror = function(e) {
@@ -203,13 +206,12 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('UI reset');
         selectedFile = null;
         previewImage.src = '';
-        uploadArea.style.display = 'block'; // Show upload area
-        // lottieContainer.style.display = 'flex'; // Ensure Lottie is visible if it was hidden
-        previewContainer.style.display = 'none'; // Hide preview area
-        resultContainer.style.display = 'none'; // Hide result area
-        resultContainer.classList.remove('show'); // Remove animation class
-        fileInput.value = ''; // Clear the file input
-        // analyzeBtn.disabled = true; // Disable analyze button
+        uploadArea.style.display = 'block';
+        previewContainer.style.display = 'none';
+        previewContainer.classList.remove('visible'); // Remove visible class
+        resultContainer.style.display = 'none';
+        resultContainer.classList.remove('show');
+        fileInput.value = '';
     }
 
     // Show error message
