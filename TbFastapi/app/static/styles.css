@@ -1,0 +1,415 @@
+/* General Body Styles */
+body {
+    font-family: 'Roboto', sans-serif; /* Modern, clean font */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6; /* Light, neutral background */
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Header & Navigation */
+header {
+    background-color: #ffffff; /* Clean white header */
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95); /* Slight transparency on scroll */
+    backdrop-filter: blur(5px);
+}
+
+nav.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #007bff; /* Primary color for logo */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.logo:hover {
+    color: #0056b3;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+}
+
+/* Page Title in Header */
+#page-title {
+    font-size: 1.5em; /* Adjusted size */
+    color: #333;
+    margin: 0; /* Remove default margin if it's an h1 */
+    text-align: center; /* Or adjust as needed */
+    flex-grow: 1; /* Allows it to take space if nav is space-between */
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #6dd5ed, #2193b0); /* Engaging gradient */
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('your-optional-subtle-background-pattern.png'); /* Optional pattern */
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h2 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    font-weight: 700;
+    animation: fadeInDown 1s ease-out;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    animation: fadeInUp 1s ease-out 0.3s;
+    animation-fill-mode: backwards; /* Start invisible */
+}
+
+.btn {
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 25px; /* Rounded buttons */
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+}
+
+/* Main Content Sections */
+main section {
+    padding: 60px 0;
+    border-bottom: 1px solid #e0e0e0; /* Separator */
+}
+
+main section:last-child {
+    border-bottom: none;
+}
+
+main section h2 {
+    text-align: center;
+    font-size: 2.2em;
+    color: #333;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+main section h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #007bff;
+    margin: 10px auto 0;
+}
+
+/* Upload Section Specifics */
+.upload-section {
+    background-color: #ffffff;
+}
+
+#upload-area {
+    border: 3px dashed #007bff; /* Primary color dash */
+    padding: 50px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #e9f5ff; /* Light blue tint */
+    border-radius: 10px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    margin-bottom: 20px;
+}
+
+#upload-area:hover, #upload-area.dragover {
+    background-color: #d0eaff;
+    border-color: #0056b3;
+    transform: scale(1.02); /* Subtle zoom effect */
+}
+
+#upload-area p {
+    margin: 0;
+    font-size: 1.1em;
+    color: #007bff;
+}
+
+#file-input {
+    display: none;
+}
+
+/* Preview Container */
+#preview-container {
+    text-align: center;
+    margin-top: 20px;
+    opacity: 0; /* Initially hidden for transition */
+    transform: translateY(20px); /* Initial position for transition */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+#preview-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#preview-image {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Buttons in Upload Area */
+.upload-section .btn-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.upload-section .btn {
+    margin: 0 10px;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62;
+    transform: translateY(-2px);
+}
+
+/* Result Container */
+#result-container {
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    opacity: 0; /* Initially hidden for transition */
+    transform: translateY(30px); /* Initial position for transition */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+#result-container.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.result-text h3 {
+    margin-top: 0;
+    font-size: 1.6em;
+    margin-bottom: 10px;
+}
+
+.result-text p {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+.result-normal {
+    color: #28a745; /* Green for normal */
+}
+
+.result-tb {
+    color: #dc3545; /* Red for TB */
+}
+
+.error-message {
+    color: #D8000C !important; /* Ensure high specificity */
+    background-color: #FFD2D2;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #D8000C;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+/* Loading Indicator */
+#loading-container {
+    display: none; /* Hidden by default */
+    position: fixed; /* Full screen overlay */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px);
+}
+
+.loader {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #007bff; /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+/* About Section */
+.about-section {
+    background-color: #e9f5ff; /* Light blue background */
+}
+
+.about-section p {
+    font-size: 1.1em;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Footer */
+footer {
+    background-color: #343a40; /* Dark footer */
+    color: #f8f9fa;
+    padding: 40px 0;
+    text-align: center;
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 0.95em;
+}
+
+footer a {
+    color: #00aaff; /* Light blue links in footer */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #6dd5ed;
+    text-decoration: underline;
+}
+
+/* Keyframe Animations */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    nav.container {
+        flex-direction: column;
+    }
+
+    nav ul {
+        margin-top: 15px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .hero h2 {
+        font-size: 2.2em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    #page-title {
+        margin-top: 10px; /* Space below logo on mobile */
+    }
+}

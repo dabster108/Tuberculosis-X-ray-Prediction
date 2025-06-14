@@ -27,7 +27,7 @@ model = load_model(MODEL_PATH, device)
 # HTML form for uploading image
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
-    return templates.TemplateResponse("upload.html", {"request": request})
+    return templates.TemplateResponse("index.html", {"request": request}) # Changed to index.html
 
 # Endpoint for handling image upload and prediction
 @app.post("/predict", response_model=PredictionResponse)

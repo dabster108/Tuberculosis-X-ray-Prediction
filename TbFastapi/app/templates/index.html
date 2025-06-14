@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TB X-Ray Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">TBScan</a>
+            <h1 id="page-title">Tuberculosis X-Ray Analysis</h1> <!-- Updated Title -->
+            <ul>
+                <li><a href="#upload-section">Upload</a></li>
+                <li><a href="#about-section">About</a></li>
+                <li><a href="#contact-section">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero-section" class="hero"> <!-- Hero Section -->
+            <div class="container">
+                <h2>Advanced AI-Powered Tuberculosis Detection</h2>
+                <p>Upload your chest X-ray and get a quick analysis. Our model helps in early detection of Tuberculosis.</p>
+                <a href="#upload-section" class="btn btn-primary">Get Started</a>
+            </div>
+        </section>
+
+        <section id="upload-section" class="upload-section container">
+            <h2>Upload Chest X-Ray</h2>
+
+            <!-- Main Upload Area -->
+            <div id="upload-area">
+                <p>Drag & drop your X-ray image here, or click to select file.</p>
+                <input type="file" id="file-input" accept="image/*">
+            </div>
+
+            <!-- Image Preview Area -->
+            <div id="preview-container" style="display: none;">
+                <img id="preview-image" src="#" alt="Image Preview">
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="btn-container" style="text-align: center; margin-top: 20px;">
+                <button id="analyze-btn" class="btn btn-primary" style="display: none;">Analyze X-Ray</button>
+                <button id="reset-btn" class="btn btn-secondary" style="display: none;">Reset</button>
+            </div>
+
+            <!-- Loading Indicator -->
+            <div id="loading-container" style="display: none;">
+                <div class="loader"></div>
+                <p>Analyzing, please wait...</p>
+            </div>
+            
+            <!-- Analysis Result Area -->
+            <div id="result-container" class="result-section" style="display:none;">
+                <h3>Analysis Result</h3>
+                <p id="result-text"></p>
+            </div>
+        </section>
+
+        <section id="about-section" class="about-section container"> <!-- About Section -->
+            <h2>About This Tool</h2>
+            <p>This tool uses a deep learning model to analyze chest X-rays for signs of Tuberculosis. It is intended for informational purposes and should not replace professional medical advice.</p>
+        </section>
+    </main>
+
+    <footer id="footer-element"> <!-- Footer Element -->
+        <div class="container">
+            <p>&copy; 2024 TBScan. All rights reserved. For research and educational purposes only.</p>
+            <p><a href="#contact-section">Contact Us</a> | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', path='upload.js') }}"></script>
+</body>
+</html>
