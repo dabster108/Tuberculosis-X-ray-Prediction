@@ -1,12 +1,12 @@
 /* General Body Styles */
 body {
-    font-family: 'Roboto', sans-serif; /* Modern, clean font */
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f7f6; /* Light, neutral background */
-    color: #333;
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text */
     line-height: 1.6;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden;
 }
 
 .container {
@@ -18,9 +18,9 @@ body {
 
 /* Header & Navigation */
 header {
-    background-color: #ffffff; /* Clean white header */
+    background-color: #1f1f1f; /* Slightly lighter dark for header */
     padding: 15px 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Darker shadow */
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -28,7 +28,7 @@ header {
 }
 
 header.scrolled {
-    background-color: rgba(255, 255, 255, 0.95); /* Slight transparency on scroll */
+    background-color: rgba(31, 31, 31, 0.95); /* Darker semi-transparent */
     backdrop-filter: blur(5px);
 }
 
@@ -41,13 +41,13 @@ nav.container {
 .logo {
     font-size: 1.8em;
     font-weight: bold;
-    color: #007bff; /* Primary color for logo */
+    color: #00aaff; /* Brighter blue for dark theme */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .logo:hover {
-    color: #0056b3;
+    color: #0077cc; /* Darker shade of the brighter blue */
 }
 
 nav ul {
@@ -63,7 +63,7 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #555;
+    color: #bbbbbb; /* Lighter grey for nav links */
     font-weight: 500;
     transition: color 0.3s ease, border-bottom 0.3s ease;
     padding-bottom: 5px;
@@ -71,23 +71,23 @@ nav ul li a {
 }
 
 nav ul li a:hover, nav ul li a.active {
-    color: #007bff;
-    border-bottom: 2px solid #007bff;
+    color: #00aaff; /* Brighter blue for active/hover */
+    border-bottom: 2px solid #00aaff;
 }
 
 /* Page Title in Header */
 #page-title {
-    font-size: 1.5em; /* Adjusted size */
-    color: #333;
-    margin: 0; /* Remove default margin if it's an h1 */
+    font-size: 1.5em;
+    color: #e0e0e0; /* Light text */
+    margin: 0;
     text-align: center; /* Or adjust as needed */
     flex-grow: 1; /* Allows it to take space if nav is space-between */
 }
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #6dd5ed, #2193b0); /* Engaging gradient */
-    color: white;
+    background: linear-gradient(135deg, #3a7bd5, #00d2ff); /* Vibrant blue gradient for dark theme */
+    color: #ffffff; /* White text on gradient */
     padding: 80px 0;
     text-align: center;
     position: relative;
@@ -137,21 +137,21 @@ nav ul li a:hover, nav ul li a.active {
 }
 
 .btn-primary {
-    background-color: #007bff;
-    color: white;
-    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+    background-color: #00aaff; /* Brighter blue */
+    color: #121212; /* Dark text for contrast on bright button */
+    box-shadow: 0 4px 15px rgba(0, 170, 255, 0.3);
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
+    background-color: #0077cc;
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+    box-shadow: 0 6px 20px rgba(0, 170, 255, 0.4);
 }
 
 /* Main Content Sections */
 main section {
     padding: 60px 0;
-    border-bottom: 1px solid #e0e0e0; /* Separator */
+    border-bottom: 1px solid #333333; /* Darker separator */
 }
 
 main section:last-child {
@@ -161,7 +161,7 @@ main section:last-child {
 main section h2 {
     text-align: center;
     font-size: 2.2em;
-    color: #333;
+    color: #e0e0e0; /* Light text */
     margin-bottom: 40px;
     position: relative;
 }
@@ -171,36 +171,36 @@ main section h2::after {
     display: block;
     width: 60px;
     height: 3px;
-    background-color: #007bff;
+    background-color: #00aaff; /* Brighter blue accent */
     margin: 10px auto 0;
 }
 
 /* Upload Section Specifics */
 .upload-section {
-    background-color: #ffffff;
+    background-color: #1e1e1e; /* Dark background for section */
 }
 
 #upload-area {
-    border: 3px dashed #007bff; /* Primary color dash */
+    border: 3px dashed #00aaff; /* Brighter blue dash */
     padding: 50px;
     text-align: center;
     cursor: pointer;
-    background-color: #e9f5ff; /* Light blue tint */
+    background-color: #2a2a2a; /* Darker shade for upload area */
     border-radius: 10px;
     transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
     margin-bottom: 20px;
 }
 
 #upload-area:hover, #upload-area.dragover {
-    background-color: #d0eaff;
-    border-color: #0056b3;
-    transform: scale(1.02); /* Subtle zoom effect */
+    background-color: #333333; /* Slightly lighter on hover */
+    border-color: #0077cc;
+    transform: scale(1.02);
 }
 
 #upload-area p {
     margin: 0;
     font-size: 1.1em;
-    color: #007bff;
+    color: #00aaff; /* Brighter blue text */
 }
 
 #file-input {
@@ -225,8 +225,9 @@ main section h2::after {
     max-width: 100%;
     max-height: 400px;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Adjusted shadow for dark */
     margin-bottom: 20px;
+    background-color: #333; /* Add a background for transparent images */
 }
 
 /* Buttons in Upload Area */
@@ -240,12 +241,12 @@ main section h2::after {
 }
 
 .btn-secondary {
-    background-color: #6c757d;
-    color: white;
+    background-color: #4a4a4a; /* Dark grey for secondary button */
+    color: #e0e0e0; /* Light text */
 }
 
 .btn-secondary:hover {
-    background-color: #545b62;
+    background-color: #5a5a5a; /* Lighter grey on hover */
     transform: translateY(-2px);
 }
 
@@ -254,8 +255,8 @@ main section h2::after {
     margin-top: 30px;
     padding: 25px;
     border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    background-color: #2a2a2a; /* Dark background for results */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
     text-align: center;
     opacity: 0; /* Initially hidden for transition */
     transform: translateY(30px); /* Initial position for transition */
@@ -271,40 +272,42 @@ main section h2::after {
     margin-top: 0;
     font-size: 1.6em;
     margin-bottom: 10px;
+    /* Color will be set by .result-normal or .result-tb */
 }
 
 .result-text p {
     font-size: 1.1em;
     margin-bottom: 5px;
+    color: #cccccc; /* Lighter grey for paragraph text in results */
 }
 
 .result-normal {
-    color: #28a745; /* Green for normal */
+    color: #28a745; /* Keep green, it's usually visible enough */
 }
 
 .result-tb {
-    color: #dc3545; /* Red for TB */
+    color: #dc3545; /* Keep red, it's usually visible enough */
 }
 
 .error-message {
-    color: #D8000C !important; /* Ensure high specificity */
-    background-color: #FFD2D2;
+    color: #ffdddd !important; /* Light red text for errors */
+    background-color: #5c0000; /* Dark red background for errors */
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #D8000C;
+    border: 1px solid #d8000c;
     font-weight: bold;
     margin-top: 15px;
 }
 
 /* Loading Indicator */
 #loading-container {
-    display: none; /* Hidden by default */
-    position: fixed; /* Full screen overlay */
+    display: none;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
+    background-color: rgba(0, 0, 0, 0.85); /* Darker semi-transparent overlay */
     z-index: 2000;
     justify-content: center;
     align-items: center;
@@ -312,8 +315,8 @@ main section h2::after {
 }
 
 .loader {
-    border: 8px solid #f3f3f3; /* Light grey */
-    border-top: 8px solid #007bff; /* Blue */
+    border: 8px solid #444444; /* Darker grey for loader track */
+    border-top: 8px solid #00aaff; /* Brighter blue for loader spinner */
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -322,7 +325,7 @@ main section h2::after {
 
 /* About Section */
 .about-section {
-    background-color: #e9f5ff; /* Light blue background */
+    background-color: #1e1e1e; /* Dark background for section */
 }
 
 .about-section p {
@@ -331,12 +334,13 @@ main section h2::after {
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
+    color: #cccccc; /* Lighter grey text */
 }
 
 /* Footer */
 footer {
-    background-color: #343a40; /* Dark footer */
-    color: #f8f9fa;
+    background-color: #1f1f1f; /* Consistent dark footer */
+    color: #aaaaaa; /* Light grey for footer text */
     padding: 40px 0;
     text-align: center;
 }
@@ -347,13 +351,13 @@ footer p {
 }
 
 footer a {
-    color: #00aaff; /* Light blue links in footer */
+    color: #00aaff; /* Brighter blue for links */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 footer a:hover {
-    color: #6dd5ed;
+    color: #6dd5ed; /* Lighter blue on hover */
     text-decoration: underline;
 }
 
